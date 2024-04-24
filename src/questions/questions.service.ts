@@ -5,7 +5,6 @@ import OpenAI from 'openai';
 @Injectable()
 export class QuestionsService {
   async create(createQuestionDto: CreateQuestionDto) {
-    console.log(process.env.OPENAI_API_KEY);
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
       baseURL: process.env.OPENAI_BASE_URL,
