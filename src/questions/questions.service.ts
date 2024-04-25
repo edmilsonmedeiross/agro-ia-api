@@ -47,4 +47,12 @@ export class QuestionsService {
       console.log('error', error);
     }
   }
+
+  async createGemini(createQuestionDto: CreateQuestionDto) {
+    try {
+      return [];
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
 }

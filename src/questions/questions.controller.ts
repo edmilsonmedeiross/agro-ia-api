@@ -44,4 +44,9 @@ export class QuestionsController {
   createGpt(@Body() createQuestionDto: CreateQuestionDto) {
     return this.questionsService.createGpt(createQuestionDto);
   }
+
+  @Post('gemini')
+  createGemini(@Body() createQuestionDto: CreateQuestionDto) {
+    return this.questionsService.createGemini(createQuestionDto);
+  }
 }
