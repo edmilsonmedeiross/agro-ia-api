@@ -12,11 +12,17 @@ async function bootstrap() {
     .setTitle('Agro-AI API')
     .setDescription('A API de soluções de IA para o agronegócio.')
     .setVersion('1.0')
-    .addTag('agro-ai')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api', app, document, {
+    swaggerOptions: {
+      persistAuthorization: true,
+      docExpansion: 'none',
+    },
+
+    customSiteTitle: 'Agro-AI API',
+  });
 
   await app.listen(3000);
 }
