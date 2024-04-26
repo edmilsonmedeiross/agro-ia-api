@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CreateQuestionDto } from './dto/create-question.dto';
+import { CreateQuestionGeminiDto } from './dto/create-question-gemini.dto';
 import OpenAI from 'openai';
 import { HttpService } from '@nestjs/axios';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 @Injectable()
 export class QuestionsService {
@@ -43,6 +45,30 @@ export class QuestionsService {
       }));
 
       return messages || [];
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+
+  async createGemini(createQuestionGeminiDto: CreateQuestionGeminiDto) {
+    if (!createQuestionGeminiDto || !createQuestionGeminiDto.prompt) {
+      return 'Please provide a prompt';
+    }
+
+    if (createQuestionGeminiDto.prompt.length < 3) {
+      return 'Please provide a prompt with at least 3 characters';
+    }
+
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+    try {
+      const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+      const prompt = createQuestionGeminiDto.prompt;
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const message = { message: response.text() };
+
+      return message || '';
     } catch (error) {
       console.log('error', error);
     }
