@@ -4,6 +4,8 @@ import { CreateQuestionGeminiDto } from './dto/create-question-gemini.dto';
 import OpenAI from 'openai';
 import { HttpService } from '@nestjs/axios';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import Anthropic from '@anthropic-ai/sdk';
+import { CreateQuestionClaudeDto } from './dto/create-question-claude.dto';
 
 @Injectable()
 export class QuestionsService {
@@ -69,6 +71,38 @@ export class QuestionsService {
       const message = { message: response.text() };
 
       return message || '';
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+
+  async createClaude(createQuestionClaudeDto: CreateQuestionClaudeDto) {
+    if (
+      !createQuestionClaudeDto ||
+      !createQuestionClaudeDto.content ||
+      createQuestionClaudeDto.content.length === 0
+    ) {
+      return 'Please provide at least one message';
+    }
+
+    if (createQuestionClaudeDto.content.length < 3) {
+      return 'Please provide a message with at least 3 characters';
+    }
+
+    const anthropic = new Anthropic({
+      apiKey: process.env.ANTHROPIC_API_KEY,
+    });
+
+    try {
+      const message = await anthropic.messages.create({
+        max_tokens: 1024,
+        messages: [{ role: 'user', content: createQuestionClaudeDto.content }],
+        model: 'claude-3-opus-20240229',
+      });
+
+      const ressponse = { message: message.content[0].text };
+
+      return ressponse || '';
     } catch (error) {
       console.log('error', error);
     }
