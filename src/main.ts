@@ -10,6 +10,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Agro-AI API')
+    .setBasePath('https://agro-ia.vercel.app/')
     .setDescription('A API de soluções de IA para o agronegócio.')
     .setVersion('1.0')
     .build();
