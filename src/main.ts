@@ -19,6 +19,6 @@ async function bootstrap() {
     customSiteTitle: 'Agro-AI API',
   });
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
