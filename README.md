@@ -1,73 +1,134 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Prova de Conceito (PoC) API para Insights Financeiros no Agronegócio
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Visão Geral
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Esta Prova de Conceito (PoC) Agro-ia-api foi desenvolvida usando NestJS e integra-se com três modelos de IA diferentes: OpenAI, Gemini e Claude. O objetivo da API é receber prompts predefinidos e oferecer insights financeiros para o agronegócio, com foco em safras. A API também inclui mecanismos de validação de dados e está documentada com Swagger para facilitar o uso e os testes.
 
-## Description
+## Índice
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [Visão Geral](#visão-geral)
+- [Recursos](#recursos)
+- [Primeiros Passos](#primeiros-passos)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Instalação](#instalação)
+  - [Executando a Aplicação](#executando-a-aplicação)
+- [Endpoints da API](#endpoints-da-api)
+- [Integrações de IA](#integrações-de-ia)
+- [Validação de Dados](#validação-de-dados)
+- [Documentação Swagger](#documentação-swagger)
+- [Contribuindo](#contribuindo)
+- [Licença](#licença)
 
-## Installation
+## Recursos
 
-```bash
-$ yarn install
+- Integração com os modelos de IA OpenAI, Gemini e Claude
+- Recebe prompts predefinidos para fornecer insights financeiros para o agronegócio
+- Validação de dados para entradas e saídas
+- Documentação abrangente da API com Swagger
+
+## Primeiros Passos
+
+### Pré-requisitos
+
+Certifique-se de ter os seguintes itens instalados:
+
+- Node.js (>= 14.x)
+- npm (>= 6.x)
+- NestJS CLI (opcional, mas recomendado)
+
+### Instalação
+
+1. Clone o repositório:
+
+    ```bash
+    git clone https://github.com/seuusuario/agro-ia-api.git
+    cd agro-ia-api
+    ```
+
+2. Instale as dependências:
+
+    ```bash
+    npm install
+    ```
+
+### Executando a Aplicação
+
+1. Inicie a aplicação NestJS:
+
+    ```bash
+    npm run start
+    ```
+
+2. A API estará disponível em `http://localhost:3000`.
+
+## Endpoints da API
+
+### POST /questions/gpt
+
+**Descrição**: Recebe um prompt predefinido e retorna insights financeiros para o agronegócio.
+
+**Corpo da Requisição**:
+
+```json
+{
+  "prompt": "string"
+}
 ```
 
-## Running the app
 
-```bash
-# development
-$ yarn run start
+### POST /questions/gemini
 
-# watch mode
-$ yarn run start:dev
+**Descrição**: Recebe um prompt predefinido e retorna insights financeiros para o agronegócio.
 
-# production mode
-$ yarn run start:prod
+**Corpo da Requisição**:
+
+```json
+{
+  "prompt": "string"
+}
 ```
 
-## Test
+### POST /questions/claude
 
-```bash
-# unit tests
-$ yarn run test
+**Descrição**: Recebe um prompt predefinido e retorna insights financeiros para o agronegócio.
 
-# e2e tests
-$ yarn run test:e2e
+**Corpo da Requisição**:
 
-# test coverage
-$ yarn run test:cov
+```json
+{
+  "prompt": "string"
+}
 ```
 
-## Support
+## Integrações de IA
+### A API integra-se com os seguintes modelos de IA:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- OpenAI: Para processamento de linguagem natural e geração de insights.
+- Gemini: Para análise avançada de dados e previsões.
+- Claude: Para insights e recomendações adicionais baseados em IA.
+- Cada modelo de IA é utilizado para aumentar a precisão e a abrangência dos insights financeiros fornecidos.
 
-## Stay in touch
+## Validação de Dados
+### A validação de dados é implementada para garantir que todas as entradas e saídas atendam aos padrões exigidos. Isso inclui:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Documentação Swagger
+### A API está documentada com Swagger para facilitar os testes e a integração. Para acessar a UI do Swagger:
 
-## License
+- Certifique-se de que a aplicação está em execução.
+- Abra seu navegador e navegue até http://localhost:3000/api.
+  
+## Contribuindo
+### Contribuições são bem-vindas! Siga estes passos para contribuir:
 
-Nest is [MIT licensed](LICENSE).
+- Faça um fork do repositório.
+- Crie uma nova branch (git checkout -b feature/sua-funcionalidade).
+- Faça suas alterações.
+- Faça o commit das suas alterações (git commit -m 'Adiciona nova funcionalidade').
+- Faça o push para a branch (git push origin feature/sua-funcionalidade).
+- Abra um pull request.
+
+## Licença
+
+Este projeto é licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+Sinta-se à vontade para modificar e aprimorar esta PoC conforme necessário para seu caso de uso específico. Feliz codificação!
