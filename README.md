@@ -4,6 +4,9 @@
 
 Esta Prova de Conceito (PoC) Agro-ia-api foi desenvolvida usando NestJS e integra-se com três modelos de IA diferentes: OpenAI, Gemini e Claude. O objetivo da API é receber prompts predefinidos e oferecer insights financeiros para o agronegócio, com foco em safras. A API também inclui mecanismos de validação de dados e está documentada com Swagger para facilitar o uso e os testes.
 
+![image](https://github.com/user-attachments/assets/206425b6-3ea2-4bb7-8c92-f1d3d5cecb35)
+
+
 ## Índice
 
 - [Visão Geral](#visão-geral)
